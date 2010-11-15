@@ -299,6 +299,8 @@ class Request {
   /**
    *
    */
+  // @codeCoverageIgnoreStart
+  // NOTE: this can't be unit tested, because it relies on current state
   public static function createFromCurrent() {
     // XXX: The spec says that the verb is case-sensitive, but user-agents
     // don't really honour that
@@ -310,6 +312,7 @@ class Request {
       Manager::getRequestHeaders()
     );
   }
+  // @codeCoverageIgnoreEnd
 
 }
 

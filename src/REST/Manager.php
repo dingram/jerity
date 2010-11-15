@@ -46,8 +46,10 @@ class Manager {
   /**
    *
    */
+  // @codeCoverageIgnoreStart
   private function __construct() {
   }
+  // @codeCoverageIgnoreEnd
 
   /**
    *
@@ -137,9 +139,9 @@ class Manager {
   /**
    *
    */
-  public static function getRequestHeaders() {
+  public static function getRequestHeaders($force_rebuild = false) {
     static $headers = array();
-    if (!count($headers)) {
+    if (!count($headers) || $force_rebuild) {
       foreach ($_SERVER as $name => $value) {
         if (substr($name, 0, 5) == 'HTTP_') {
           $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
